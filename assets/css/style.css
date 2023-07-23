@@ -1,0 +1,51 @@
+:root {
+    box-sizing: border-box;
+    background-color: beige;
+  
+}
+
+header {
+    border: solid red;
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+#citySearchList {
+    border: solid green;
+    display: flex;
+    flex-direction: row;
+    background-color: firebrick;
+    
+}
+
+/* .weatherBox {
+    height: 500px;
+    width: 250px;
+} */
+
+#currentWeather {
+    border: solid yellow;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#fiveDayForecast {
+    border: solid blue;
+    background-color: tomato;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
