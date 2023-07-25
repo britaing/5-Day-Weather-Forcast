@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Weather Dashboard</h1>
+    <header class="box">
+        <h1 class="is-size-1">Weather Dashboard</h1>
     </header>
-    <Main>
+    <Main class="columns">
         
         <section>
-        <aside id="citySearchList">
+        <aside id="citySearchList" class="column is-two-quarters box m-6">
             <div><input id="searchInput" placeholder="City, State"></div>
             <button id="searchButton">Search</button>
             <div></div>
         </aside>
         </section>
         
-        <section>
+        <section class="card column m-6" >
             
-            <div id="currentWeather" class="weatherBox">
+            <div id="currentWeather" class="box">
                 <h2>current weather</h2>
     
             </div>
     
-            <div id="fiveDayForecast" class="weatherBox">
+            <div id="fiveDayForecast" class="box">
                 <h2>five day forcast</h2>
     
             </div>

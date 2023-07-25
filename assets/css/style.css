@@ -1,39 +1,39 @@
-:root {
+/* :root {
     box-sizing: border-box;
     background-color: beige;
   
-}
+} */
 
-header {
+/* header {
     border: solid red;
     background-color: cornflowerblue;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 5px;
-}
+} */
 
-main {
+/* main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     
-}
+} */
 
-#citySearchList {
+/* #citySearchList {
     border: solid green;
     display: flex;
-    flex-direction: row;
-    background-color: firebrick;
     
-}
+  
+    
+} */
 
 /* .weatherBox {
     height: 500px;
     width: 250px;
 } */
 
-#currentWeather {
+/* #currentWeather {
     border: solid yellow;
     background-color: aquamarine;
     display: flex;
@@ -48,4 +48,4 @@ main {
     display: flex;
     flex-direction: column;
     padding: 5px;
-}
+} */
