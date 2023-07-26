@@ -8,51 +8,92 @@ var searchButton = document.getElementById('searchButton');
 
 
 
-searchButton.addEventListener('click', function(event){
+searchButton.addEventListener('click', function (event) {
     event.preventDefault();
-    searchCriteria = document.getElementById("searchInput").value; 
+    searchCriteria = document.getElementById("searchInput").value;
     //showing that the search is being encoded correctly
-    
+
     getCity(encodeURI(searchCriteria));
+
 });
 
-
-//need to get city info in order to find lat/lon variables that can be used in another function to call on city info
+//API search city to get lat/lon
 function getCity(city) {
-    
-    var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
+
+    var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIKey;
     fetch(queryURL)
         .then(function (response) {
             if (!response.ok) {
                 console.log('Sorry, request has failed');
             }
             return response.json();
-       })  
-       .then(function(data){
-        console.log(data);
-       });
-       
-//can't get api info to show in console 
 
-       
-     
+        })
+        .then(function (data) {
+            let lat = data[0].lat;
+            let lon = data[0].lon;
+            currentWeather(lat, lon);
+
+        });
+
+}
+//API to use lat/lon from previous API to get weather information
+function currentWeather(lat, lon) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + '&units=imperial';
+
+    fetch(queryURL)
+        .then(function (response) {
+            if (!response.ok) {
+                console.log('Sorry, request has failed');
+            }
+            return response.json();
+
+        })
+        .then(function (data) {
+            displayCurrentWeather(data);
+        });
+
+   
 
 }
 
-// function currentWeather(){
-
-// }
-
-// function forecastFuture(){
-
-// }
-
-
-//
-
-
+function displayCurrentWeather(info) {
+    console.log(info);
+    var city = info.name
+    var temp = info.main.temp;
+    var humidity = info.main.humidity;
+    var wind = info.wind.speed;
+    var icon = info.weather[0].icon;
+    var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+    var unix = info.dt;
+    var date = new Date(unix * 1000).toLocaleDateString();
 
 
+    // create
+    var cityNameEl = document.createElement('h2');
+    var tempEl = document.createElement('p');
+    var humidityEl = document.createElement('p');
+    var windEl = document.createElement('p');
+    var iconEl = document.createElement('img');
+   iconEl.setAttribute('src', iconurl)
+
+    // add
+    cityNameEl.textContent = city + ' ' + date
+    tempEl.textContent = 'Temp: ' +  temp;
+    humidityEl.textContent = humidity;
+    windEl.textContent = wind;
+
+
+
+    // append
+    document.getElementById('currentWeather').append(cityNameEl, iconEl, tempEl, humidityEl, windEl)
+
+
+
+
+}
+
+// function forecastFuture(){}
 
 
 
@@ -67,4 +108,4 @@ function getCity(city) {
 // THEN I am again presented with current and future conditions for that city
 
 
-// lat/lon api variable "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+
